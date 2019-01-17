@@ -19,8 +19,15 @@ namespace TipCalc.Droid.Views
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.TipView);
+            try
+            {
+                base.OnCreate(bundle);
+                SetContentView(Resource.Layout.TipView);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
         }
     }
 }
