@@ -2,6 +2,7 @@
 using TipCalc.Core.Services;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
+using System.Windows.Input;
 
 namespace TipCalc.Core.ViewModels
 {
@@ -12,6 +13,8 @@ namespace TipCalc.Core.ViewModels
         public TipViewModel(ICalculationService calculationService)
         {
             _calculationService = calculationService ?? throw new System.ArgumentNullException(nameof(calculationService));
+
+            ClickCommand3 = new MvxCommand(clickCommand_Execute);
         }
 
         public override async Task Initialize()
@@ -72,6 +75,24 @@ namespace TipCalc.Core.ViewModels
         }
 
         private MvxCommand clickCommand;
+
         public MvxCommand ClickCommand => clickCommand ?? (clickCommand = new MvxCommand(() => SubTotal *= 10));
+        public ICommand ClickCommand2
+        {
+            get
+            {
+                if(clickCommand == null)
+                {
+                    clickCommand = new MvxCommand(clickCommand_Execute);
+                }
+                return clickCommand;
+            }
+        }
+        public ICommand ClickCommand3 { get; private set; }
+
+        private void clickCommand_Execute()
+        {
+            SubTotal *= 10;
+        }
     }
 }

@@ -25,6 +25,19 @@ namespace Tests
 
             Assert.AreEqual(expected, actual, "Expected tip amount does not match.");
         }
+
+        [Test]
+        public void TestCommand()
+        {
+            var vm = new TipViewModel(new CalculationService());
+
+            double originalSubTotal = 25;
+            vm.SubTotal = originalSubTotal;
+
+            vm.ClickCommand.Execute();
+
+            Assert.AreEqual(originalSubTotal * 10, vm.SubTotal);
+        }
     }
 
     public class WaitersDreamCalculationService : ICalculationService
