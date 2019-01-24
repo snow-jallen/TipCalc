@@ -10,7 +10,7 @@ namespace TipCalc.Core.ViewModels
 
         public TipViewModel(ICalculationService calculationService)
         {
-            _calculationService = calculationService;
+            _calculationService = calculationService ?? throw new System.ArgumentNullException(nameof(calculationService));
         }
 
         public override async Task Initialize()
