@@ -33,4 +33,10 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           local:MvxBind="Text Tip" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Content Description"
+        android:text="Button Text"
+        local:MvxBind="Click ClickCommand"/>
 </LinearLayout>
