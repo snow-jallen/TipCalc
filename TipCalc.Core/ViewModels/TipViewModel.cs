@@ -1,6 +1,7 @@
 ﻿using MvvmCross.ViewModels;
 using TipCalc.Core.Services;
 using System.Threading.Tasks;
+using MvvmCross.Commands;
 
 namespace TipCalc.Core.ViewModels
 {
@@ -64,5 +65,13 @@ namespace TipCalc.Core.ViewModels
         {
             Tip = _calculationService.TipAmount(SubTotal, Generosity);
         }
+
+        public void ClickMe()
+        {
+            SubTotal *= 10;
+        }
+
+        private MvxCommand clickCommand;
+        public MvxCommand ClickCommand => clickCommand ?? (clickCommand = new MvxCommand(() => SubTotal *= 10));
     }
 }
