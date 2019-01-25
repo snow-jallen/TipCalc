@@ -35,8 +35,10 @@
           local:MvxBind="Text Tip" />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150px"
+		android:layout_margin="5px"
+		android:padding="10px"
         android:contentDescription="Content Description"
-        android:text="Button Text"
+        android:text="Add Drinks to Order"
         local:MvxBind="Click ClickCommand"/>
 </LinearLayout>
