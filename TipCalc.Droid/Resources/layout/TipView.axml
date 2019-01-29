@@ -41,4 +41,12 @@
         android:contentDescription="Content Description"
         android:text="Add Drinks to Order"
         local:MvxBind="Click ClickCommand"/>
+	<Button
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+		android:layout_margin="5px"
+		android:padding="10px"
+        android:contentDescription="Content Description"
+        android:text="Speak to me"
+        local:MvxBind="Click SpeakCommand"/>
 </LinearLayout>

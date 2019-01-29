@@ -1,5 +1,7 @@
 ﻿using MvvmCross;
 using MvvmCross.ViewModels;
+using Plugin.TextToSpeech;
+using Plugin.TextToSpeech.Abstractions;
 using TipCalc.Core.Services;
 using TipCalc.Core.ViewModels;
 
@@ -10,6 +12,7 @@ namespace TipCalc.Core
         public override void Initialize()
         {
             Mvx.IoCProvider.RegisterType<ICalculationService, CalculationService>();
+            Mvx.RegisterSingleton(CrossTextToSpeech.Current);
 
             RegisterAppStart<TipViewModel>();
         }

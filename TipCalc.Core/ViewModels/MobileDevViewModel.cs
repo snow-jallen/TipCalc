@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvvmCross.Commands;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -7,37 +8,12 @@ using System.Windows.Input;
 
 namespace TipCalc.Core.ViewModels
 {
-    public class SimpleCommand : ICommand
-    {
-        private readonly Action execute;
-        private readonly Func<bool> canExecute;
-
-        public SimpleCommand(Action execute, Func<bool> canExecute = null)
-        {
-            this.execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            this.canExecute = canExecute;
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return canExecute();
-        }
-
-        public void Execute(object parameter)
-        {
-            if(canExecute())
-                execute();
-        }
-    }
-
     public class MobileDevViewModel : INotifyPropertyChanged
     {
 
 
         private ICommand doCalculation;
-        public ICommand DoCalculation => doCalculation ?? (doCalculation = new SimpleCommand(
+        public ICommand DoCalculation => doCalculation ?? (doCalculation = new MvxCommand(
             //execute
             ()=> 
             {

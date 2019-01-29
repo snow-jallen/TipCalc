@@ -3,6 +3,7 @@ using TipCalc.Core.Services;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using System.Windows.Input;
+using Plugin.TextToSpeech.Abstractions;
 
 namespace TipCalc.Core.ViewModels
 {
@@ -10,11 +11,14 @@ namespace TipCalc.Core.ViewModels
     {
         readonly ICalculationService _calculationService;
 
-        public TipViewModel(ICalculationService calculationService)
+        public TipViewModel(ICalculationService calculationService, 
+            ITextToSpeech textToSpeech)
         {
             _calculationService = calculationService ?? throw new System.ArgumentNullException(nameof(calculationService));
 
             ClickCommand3 = new MvxCommand(clickCommand_Execute);
+
+            SpeakCommand = new MvxCommand(() => textToSpeech.Speak($"You spent {SubTotal}?!"));
         }
 
         public override async Task Initialize()
@@ -89,6 +93,7 @@ namespace TipCalc.Core.ViewModels
             }
         }
         public ICommand ClickCommand3 { get; private set; }
+        public MvxCommand SpeakCommand { get; }
 
         private void clickCommand_Execute()
         {
