@@ -1,4 +1,5 @@
 ﻿using MvvmCross;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using Plugin.TextToSpeech;
 using Plugin.TextToSpeech.Abstractions;
@@ -11,6 +12,7 @@ namespace TipCalc.Core
     {
         public override void Initialize()
         {
+            //Mvx.IoCProvider.RegisterType<IMvxNavigationService, MvxNavigationService>();
             Mvx.IoCProvider.RegisterType<ICalculationService, CalculationService>();
             Mvx.RegisterSingleton(CrossTextToSpeech.Current);
 

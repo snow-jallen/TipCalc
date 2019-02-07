@@ -60,6 +60,7 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\DetailView.cs" />
     <Compile Include="Views\TipView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\TipView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\DetailView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
